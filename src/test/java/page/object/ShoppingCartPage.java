@@ -1,14 +1,15 @@
 package page.object;
 
-import org.openqa.selenium.WebDriver;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import util.DriverManager;
+import driver.manager.DriverManager;
 
 public class ShoppingCartPage {
 
-    private WebDriver driver;
+    private Logger logger = LogManager.getRootLogger();
 
     public ShoppingCartPage() {
         PageFactory.initElements(DriverManager.getWebDriver(), this);
@@ -19,5 +20,7 @@ public class ShoppingCartPage {
 
     public void proceedToCheckout() {
         proceedToCheckout.click();
+        logger.info("Click on Procced To Checkout button ");
+
     }
 }

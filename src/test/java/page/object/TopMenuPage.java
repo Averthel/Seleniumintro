@@ -1,31 +1,37 @@
 package page.object;
 
-
-import org.openqa.selenium.WebDriver;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import util.DriverManager;
+import driver.manager.DriverManager;
+import waits.WaitForElement;
 
 public class TopMenuPage {
 
-    private WebDriver driver;
+    private Logger logger = LogManager.getRootLogger();
 
     public TopMenuPage() {
         PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
     @FindBy(css = "#MenuContent a[href*='signonForm']")
-    WebElement signInLink;
+    WebElement signonLink;
 
     @FindBy(xpath = "//div[@id='QuickLinks']/a[1]")
     WebElement fishLink;
 
-    public void clickOnSignInLink(){
-        signInLink.click();
+    public LoginPage clickOnSignInLink(){
+        WaitForElement.waitUntilElementIsClickable(signonLink);
+        signonLink.click();
+        logger.info("Click in Sign on link");
+        return new LoginPage();
     }
 
-    public void clickOnFishlink(){
+    public FishListPage clickOnFishlink(){
+        WaitForElement.waitUntilElementIsClickable(fishLink);
         fishLink.click();
+        return new FishListPage();
     }
 }

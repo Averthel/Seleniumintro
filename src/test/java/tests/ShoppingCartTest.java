@@ -11,19 +11,11 @@ public class ShoppingCartTest extends TestBase {
     @Test
     public void asNotLoggedInUserTryProceedToCheckout() {
         LandingPage landingPage = new LandingPage();
-        landingPage.clickOnEnterStoreLink();
-
-        TopMenuPage topMenuPage = new TopMenuPage();
-        topMenuPage.clickOnFishlink();
-
-        FishListPage fishSubpage = new FishListPage();
-        fishSubpage.angelFishMenu();
-
-        AngelfishListPage angelfishListPage = new AngelfishListPage();
-        angelfishListPage.addSmallAngelFish();
-
-        ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
-        shoppingCartPage.proceedToCheckout();
+        landingPage.clickOnEnterStoreLink()
+                .clickOnFishlink()
+                .angelFishMenu()
+                .addSmallAngelFish()
+                .proceedToCheckout();
 
         LoginPage loginPage = new LoginPage();
         String message = loginPage.getWarningMessage();
