@@ -4,14 +4,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import util.DriverManager;
 
 public class AngelfishListPage {
 
     private WebDriver driver;
 
-    public AngelfishListPage(WebDriver driver){
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    public AngelfishListPage(){
+        PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
     @FindBy(css = "a.Button[href*='EST-2']")
