@@ -18,8 +18,14 @@ public class TopMenuPage {
     @FindBy(css = "#MenuContent a[href*='signonForm']")
     WebElement signInLink;
 
+    @FindBy(xpath = "//div[@id='QuickLinks']/a[1]")
+    WebElement fishLink;
+
     public void clickOnSignInLink(){
         signInLink.click();
+    }
 
+    public void clickOnFishlink(){
+        fishLink.click();
     }
 }

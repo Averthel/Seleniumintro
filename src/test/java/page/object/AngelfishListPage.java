@@ -5,20 +5,20 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LandingPage {
+public class AngelfishListPage {
 
     private WebDriver driver;
 
-    public LandingPage(WebDriver driver) {
+    public AngelfishListPage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "#Content a")
-    WebElement enterStoreLink;
+    @FindBy(css = "a.Button[href*='EST-2']")
+    WebElement addSmallAngelfish;
 
-    public void clickOnEnterStoreLink(){
-        enterStoreLink.click();
-
+    public void addSmallAngelFish(){
+        addSmallAngelfish.click();
     }
 }
+

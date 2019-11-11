@@ -5,20 +5,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LandingPage {
+public class ShoppingCartPage {
 
     private WebDriver driver;
 
-    public LandingPage(WebDriver driver) {
+    public ShoppingCartPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "#Content a")
-    WebElement enterStoreLink;
+    @FindBy(xpath = "//*[@id='Cart']/a")
+    WebElement proceedToCheckout;
 
-    public void clickOnEnterStoreLink(){
-        enterStoreLink.click();
-
+    public void proceedToCheckout() {
+        proceedToCheckout.click();
     }
 }
