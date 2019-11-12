@@ -13,7 +13,7 @@ public class LandingPage {
     private Logger logger = LogManager.getRootLogger();
 
     @FindBy(css = "#Content a")
-    WebElement enterStoreLink;
+    private WebElement enterStoreLink;
 
 
     public LandingPage() {

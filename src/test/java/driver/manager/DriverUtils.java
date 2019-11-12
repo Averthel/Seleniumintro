@@ -1,6 +1,6 @@
 package driver.manager;
 
-import driver.manager.DriverManager;
+
 
 public class DriverUtils {
 
@@ -8,7 +8,7 @@ public class DriverUtils {
         DriverManager.getWebDriver().manage().window().maximize();
     }
 
-    public static void navigateToPage(String pageurl){
-        DriverManager.getWebDriver().navigate().to(pageurl);
+    public static void navigateToPage(String pageUrl){
+        DriverManager.getWebDriver().navigate().to(pageUrl);
     }
 }

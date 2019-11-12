@@ -3,7 +3,6 @@ package page.object;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -15,18 +14,19 @@ public class LoginPage {
     private Logger logger = LogManager.getRootLogger();
 
     @FindBy(name = "username")
-    WebElement usernameField;
+    private WebElement usernameField;
 
     @FindBy(name = "password")
-    WebElement passwordField;
+    private WebElement passwordField;
 
     @FindBy(name = "signon")
-    WebElement signOnButton;
+    private WebElement signOnButton;
 
     @FindBy(css = "#Content ul[class='messages'] li")
-    WebElement messageLabel;
+    private WebElement messageLabel;
 
-    private WebDriver driver;
+    @FindBy(css = "#Catalog > form > p:nth-child(1)")
+    private WebElement messageBeforeLogin;
 
     public LoginPage(){
         PageFactory.initElements(DriverManager.getWebDriver(), this);
@@ -58,6 +58,13 @@ public class LoginPage {
         String warningMessage = messageLabel.getText();
         logger.info("Returned warning message was: {}", warningMessage);
         return warningMessage;
+    }
+
+    public String isTextBeforeLogin(){
+        WaitForElement.waitUntilElementIsVisible(messageBeforeLogin);
+        String text = messageBeforeLogin.getText();
+        logger.info("Get text from Login Page");
+        return text;
     }
 
 
