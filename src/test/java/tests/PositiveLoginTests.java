@@ -8,7 +8,7 @@ import page.object.LandingPage;
 import static navigation.ApplicationURLs.LOGIN_URL;
 import static org.testng.Assert.assertTrue;
 
-public class PositiveLoginTest extends TestBase {
+public class PositiveLoginTests extends TestBase {
 
     @Test
     public void asUserLoginUsingValidLoginAndPassword() {
