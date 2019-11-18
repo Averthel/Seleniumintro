@@ -16,13 +16,10 @@ public class FailedLoginTests extends TestBase {
     public void asUserTryToLogInWithIncorrectLoginAndPassword() {
         DriverUtils.navigateToPage(LOGIN_URL);
 
-        LandingPage landingPage = new LandingPage();
-        landingPage.clickOnEnterStoreLink()
-                .clickOnSignInLink()
-                .typeIntoUserNameField("fail")
+        LoginPage loginPage = new LoginPage();
+        loginPage.typeIntoUserNameField("fail")
                 .typeIntoPasswordField("fail")
                 .clickOnLoginButton();
-        LoginPage loginPage = new LoginPage();
         String warningMessage = loginPage.getWarningMessage();
 
         assertEquals(warningMessage, "Invalid username or password. Signon failed.");

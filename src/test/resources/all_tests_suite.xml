@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="All Pet Store Tests" parallel="tests" thread-count="2">
+<suite name="All Pet Store Tests" parallel="tests" thread-count="5">
 
     <test name="Negative Login Tests">
         <classes>
@@ -19,7 +19,11 @@
             <class name="tests.ShoppingCartTest"/>
         </classes>
     </test>
-
+    <test name="search Tests">
+        <classes>
+            <class name="tests.SearchTests"/>
+        </classes>
+    </test>
      <test name="Go To Login Page Test">
          <classes>
              <class name="tests.GoToLoginPageTest"/>
