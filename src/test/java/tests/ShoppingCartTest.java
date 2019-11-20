@@ -9,7 +9,7 @@ import static org.testng.Assert.assertEquals;
 
 
 public class ShoppingCartTest extends TestBase {
-    
+
     @Test
     public void asNotLoggedInUserTryProceedToCheckout() {
         LandingPage landingPage = new LandingPage();
