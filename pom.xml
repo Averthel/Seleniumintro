@@ -7,10 +7,36 @@
     <groupId>pl.seleniumLocators</groupId>
     <artifactId>SeleniumLocator</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+
     <properties>
-        <java.version>11</java.version>
+        <aspectj.version>1.9.2</aspectj.version>
     </properties>
+
     <dependencies>
+        <!--Poniżej biblioteki konieczne do poprawnego działania Allure framework-->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+        <!--Biblioteka Allure-->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>2.10.0</version>
+        </dependency>
+        <!--Stare zależności projektowe takie jak Selenium czy TestNG-->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
@@ -20,22 +46,24 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.0.0</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>2.12.1</version>
+            <version>2.10.0</version>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
+            <!--Plugin Allure do generowania raportów-->
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.10.0</version>
                 <configuration>
-                    <source>1.9</source>
-                    <target>1.9</target>
+                    <reportVersion>2.6.0</reportVersion>
+                    <propertiesFilePath>${basedir}/src/main/resources/allure.properties</propertiesFilePath>
                 </configuration>
             </plugin>
             <plugin>
@@ -43,13 +71,42 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.21.0</version>
                 <configuration>
+                    <!--Nowy parametr określający gdzie maven-surefire-plugin ma zapisywać wyniki z testów-->
+                    <systemPropertyVariables>
+                        <allure.results.directory>${basedir}/target/allure-results</allure.results.directory>
+                    </systemPropertyVariables>
                     <suiteXmlFiles>
                         <suiteXmlFile>src\test\resources\all_tests_suite.xml</suiteXmlFile>
                     </suiteXmlFiles>
+                    <!--Konfiguracja Allura ze ścieżką do biblioteki aspectjweaver-->
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
+                </configuration>
+                <!--Dodanie dodatkowych zależności do maven-surefire-plugin w postaci biblioteki aspectjweaver-->
+                <!--Sekcja ta określa zależności dla danego pluginu-->
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
+
 
 
 </project>

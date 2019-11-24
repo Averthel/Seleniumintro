@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="All Pet Store Tests" parallel="tests" thread-count="7">
+<suite name="All Pet Store Tests" parallel="tests" thread-count="8">
 
     <test name="Negative Login Tests">
-        <parameter name="browser" value="IE"/>
+        <parameter name="browser" value="CHROME"/>
         <classes>
             <class name="tests.FailedLoginTests"/>
         </classes>

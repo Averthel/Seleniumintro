@@ -11,7 +11,7 @@ import waits.WaitForElement;
 public class LabradorRetrieverCatalog {
 
 
-    private Logger logger = LogManager.getRootLogger();
+    private Logger logger = LogManager.getLogger(LabradorRetrieverCatalog.class);
 
     public LabradorRetrieverCatalog(){
         PageFactory.initElements(DriverManager.getWebDriver(), this);

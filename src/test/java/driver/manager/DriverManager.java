@@ -2,7 +2,9 @@ package driver.manager;
 
 import driver.BrowserFactory;
 import driver.BrowserType;
+import driver.listeners.WebDriverEventListenerRegistrar;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.events.WebDriverEventListener;
 
 import static configuration.TestRunProperties.getBrowserToRun;
 import static configuration.TestRunProperties.getIsRemoteRun;
@@ -24,6 +26,9 @@ public class DriverManager {
         }else{
             browser = new BrowserFactory(browserType, getIsRemoteRun()).getBrowser();
         }
+
+        browser = WebDriverEventListenerRegistrar.registerWebDriverEventListener(browser);
+
         browserTypeThreadLocal.set(browserType);
         webDriverThreadLocal.set(browser);
 

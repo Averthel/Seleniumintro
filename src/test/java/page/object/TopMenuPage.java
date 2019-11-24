@@ -1,5 +1,6 @@
 package page.object;
 
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
@@ -10,7 +11,7 @@ import waits.WaitForElement;
 
 public class TopMenuPage {
 
-    private Logger logger = LogManager.getRootLogger();
+    private Logger logger = LogManager.getLogger(TopMenuPage.class);
 
     public TopMenuPage() {
         PageFactory.initElements(DriverManager.getWebDriver(), this);
@@ -34,6 +35,7 @@ public class TopMenuPage {
     @FindBy(css = "#Content img[src='../images/fish1.gif']")
     WebElement angelfishImg;
 
+    @Step("Click on Sign In Link")
     public LoginPage clickOnSignInLink(){
         WaitForElement.waitUntilElementIsClickable(signonLink);
         signonLink.click();
