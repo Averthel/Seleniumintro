@@ -1,6 +1,7 @@
 package page.object;
 
 
+import generic.asseration.AssertWebElement;
 import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -71,6 +72,14 @@ public class LoginPage {
         String text = messageBeforeLogin.getText();
         logger.info("Get text from Login Page");
         return text;
+    }
+
+    @Step("Assert that warning message {warningMessage} is displayed")
+    public LoginPage assertThatWarningIsDisplayed(String warningMessage){
+        logger.info("Checking if warning message {} is displayed", warningMessage);
+        WaitForElement.waitUntilElementIsVisible(messageLabel);
+        AssertWebElement.assertThat(messageLabel).isDisplayed().hasText(warningMessage);
+        return this;
     }
 
 
