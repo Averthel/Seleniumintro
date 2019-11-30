@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import page.object.LoginPage;
 
 import static navigation.ApplicationURLs.LOGIN_URL;
-import static org.testng.Assert.assertEquals;
+
 
 
 public class FailedLoginTests extends TestBase {
