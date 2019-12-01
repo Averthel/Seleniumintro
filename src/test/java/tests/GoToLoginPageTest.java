@@ -1,6 +1,5 @@
 package tests;
 
-
 import org.testng.annotations.Test;
 import page.object.LandingPage;
 
@@ -16,6 +15,7 @@ public class GoToLoginPageTest extends TestBase {
                 .clickOnSignInLink().
                         isTextBeforeLogin();
 
-        assertEquals(messageLabel, "Please enter your username and password.");
+        assertEquals(messageLabel, "Pleas enter your username and password.");
+
     }
 }

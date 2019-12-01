@@ -7,7 +7,6 @@
         <listener class-name="utils.testng.listeners.AnnotationTransformer"/>
     </listeners>
 
-
     <test name="Negative Login Tests">
         <parameter name="browser" value="CHROME"/>
         <classes>
@@ -37,5 +36,4 @@
             <class name="tests.GoToLoginPageTest"/>
         </classes>
     </test>
-
 </suite>

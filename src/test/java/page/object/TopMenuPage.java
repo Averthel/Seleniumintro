@@ -1,21 +1,11 @@
 package page.object;
 
 import io.qameta.allure.Step;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import driver.manager.DriverManager;
 import waits.WaitForElement;
 
-public class TopMenuPage {
-
-    private Logger logger = LogManager.getLogger(TopMenuPage.class);
-
-    public TopMenuPage() {
-        PageFactory.initElements(DriverManager.getWebDriver(), this);
-    }
+public class TopMenuPage extends BasePage {
 
     @FindBy(css = "#MenuContent a[href*='signonForm']")
     WebElement signonLink;
@@ -36,47 +26,46 @@ public class TopMenuPage {
     WebElement angelfishImg;
 
     @Step("Click on Sign In Link")
-    public LoginPage clickOnSignInLink(){
+    public LoginPage clickOnSignInLink() {
         WaitForElement.waitUntilElementIsClickable(signonLink);
         signonLink.click();
-        logger.info("Click in Sign on link");
+        log().info("Click in Sign on link");
         return new LoginPage();
     }
 
-    public FishListPage clickOnFishlink(){
+    public FishListPage clickOnFishlink() {
         WaitForElement.waitUntilElementIsClickable(fishLink);
         fishLink.click();
         return new FishListPage();
     }
 
-    public TopMenuPage typeIntoSearchField(String searchContent){
+    public TopMenuPage typeIntoSearchField(String searchContent) {
         WaitForElement.waitUntilElementIsVisible(searchField);
         searchField.clear();
         searchField.sendKeys(searchContent);
-        logger.info("Type into search field {}", searchContent);
+        log().info("Type into search field {}", searchContent);
         return this;
     }
 
-    public TopMenuPage clickOnSearchButton(){
+    public TopMenuPage clickOnSearchButton() {
         WaitForElement.waitUntilElementIsClickable(searchButton);
         searchButton.click();
-        logger.info("Click in search button");
+        log().info("Click in search button");
         return this;
     }
 
-    public boolean isGoldfishImgDisplayed(){
+    public boolean isGoldfishImgDisplayed() {
         WaitForElement.waitUntilElementIsVisible(goldfishImg);
         boolean isDisplayed = goldfishImg.isDisplayed();
-        logger.info("Goldfish image", isDisplayed);
+        log().info("Goldfish image", isDisplayed);
         return isDisplayed;
     }
 
-    public boolean isAngelfishImgDisplayed(){
+    public boolean isAngelfishImgDisplayed() {
         WaitForElement.waitUntilElementIsVisible(angelfishImg);
         boolean isDisplayed = angelfishImg.isDisplayed();
-        logger.info("Angelfish image", isDisplayed);
+        log().info("Angelfish image", isDisplayed);
         return isDisplayed;
     }
-
 
 }

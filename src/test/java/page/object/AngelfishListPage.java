@@ -1,28 +1,18 @@
 package page.object;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import driver.manager.DriverManager;
 import waits.WaitForElement;
 
-public class AngelfishListPage {
-
-    private Logger logger = LogManager.getLogger(AngelfishListPage.class);
+public class AngelfishListPage extends BasePage {
 
     @FindBy(css = "a.Button[href*='EST-2']")
     private WebElement addSmallAngelfish;
 
-    public AngelfishListPage(){
-        PageFactory.initElements(DriverManager.getWebDriver(), this);
-    }
-
-    public ShoppingCartPage addSmallAngelFish(){
+    public ShoppingCartPage addSmallAngelFish() {
         WaitForElement.waitUntilElementIsClickable(addSmallAngelfish);
         addSmallAngelfish.click();
-        logger.info("Click on addSmallAngelfish button");
+        log().info("Click on addSmallAngelfish button");
         return new ShoppingCartPage();
     }
 }
