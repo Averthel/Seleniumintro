@@ -4,7 +4,6 @@ import driver.BrowserFactory;
 import driver.BrowserType;
 import driver.listeners.WebDriverEventListenerRegistrar;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.events.WebDriverEventListener;
 
 import static configuration.TestRunProperties.getBrowserToRun;
 import static configuration.TestRunProperties.getIsRemoteRun;

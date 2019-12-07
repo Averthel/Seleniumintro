@@ -7,7 +7,7 @@ import waits.WaitForElement;
 public class LabradorRetrieverCatalog extends BasePage {
 
     @FindBy(css = "a.Button[href*='EST-22']")
-    WebElement addAdultMaleLabradorRetriever;
+    private WebElement addAdultMaleLabradorRetriever;
 
     public ShoppingCartPage addAdultMaleLabradorRetriever() {
         WaitForElement.waitUntilElementIsClickable(addAdultMaleLabradorRetriever);

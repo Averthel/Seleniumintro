@@ -14,10 +14,10 @@ public class ShoppingCartPage extends BasePage {
     private WebElement updateCart;
 
     @FindBy(css = "input[name = 'EST-22']")
-    WebElement quantity;
+    private WebElement quantity;
 
     @FindBy(xpath = "//*[@id='Cart']/form/table/tbody/tr[3]/td[1]")
-    WebElement totalSum;
+    private WebElement totalSum;
 
 
     public LoginPage proceedToCheckout() {

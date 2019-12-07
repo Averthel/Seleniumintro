@@ -5,25 +5,37 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import waits.WaitForElement;
 
+import java.util.List;
+
+
 public class TopMenuPage extends BasePage {
 
     @FindBy(css = "#MenuContent a[href*='signonForm']")
-    WebElement signonLink;
+    private WebElement signonLink;
 
     @FindBy(xpath = "//div[@id='QuickLinks']/a[1]")
-    WebElement fishLink;
+    private WebElement fishLink;
 
     @FindBy(name = "keyword")
-    WebElement searchField;
+    private WebElement searchField;
 
     @FindBy(name = "searchProducts")
-    WebElement searchButton;
+    private WebElement searchButton;
 
     @FindBy(css = "#Content img[src='../images/fish2.gif']")
-    WebElement goldfishImg;
+    private WebElement goldfishImg;
 
     @FindBy(css = "#Content img[src='../images/fish1.gif']")
-    WebElement angelfishImg;
+    private WebElement angelfishImg;
+
+    @FindBy(xpath = "//*[@id='SidebarContent']/a")
+    private List<WebElement> leftNavigationLinksList;
+
+    @FindBy(xpath = "//*[@id='QuickLinks']/a")
+    private List<WebElement> topNavigationLinksList;
+
+    @FindBy(xpath = "//*[@id='MainImageContent']//area")
+    private List<WebElement> bottomNavigationLinksList;
 
     @Step("Click on Sign In Link")
     public LoginPage clickOnSignInLink() {
@@ -66,6 +78,18 @@ public class TopMenuPage extends BasePage {
         boolean isDisplayed = angelfishImg.isDisplayed();
         log().info("Angelfish image", isDisplayed);
         return isDisplayed;
+    }
+
+    public List<WebElement> getLeftNavigationLinksList() {
+        return leftNavigationLinksList;
+    }
+
+    public List<WebElement> getTopNavigationLinksList() {
+        return topNavigationLinksList;
+    }
+
+    public List<WebElement> getBottomNavigationLinksList() {
+        return bottomNavigationLinksList;
     }
 
 }
